@@ -1,7 +1,7 @@
 <?php
     function connect() {
         $host = "localhost";
-        $user = "root";
+        $username = "root";
         $password = "";
         $dbname = "randevu_sistemi";
 

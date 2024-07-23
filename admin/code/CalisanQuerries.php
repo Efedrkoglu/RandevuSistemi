@@ -6,7 +6,7 @@
         try {
             $connection = connect();
             $sql = "INSERT INTO calisan VALUES(DEFAULT, '{$calisan->isim}', '{$calisan->email}', '{$calisan->calisma_baslangic}',
-                    '{$calisan->calisma_bitis}', {$calisan->maas}, {$calisan->aktif})";
+                    '{$calisan->calisma_bitis}', {$calisan->maas}, {$calisan->aktif}, '{$calisan->ise_giris_tarihi}')";
             
             $result = $connection->exec($sql);
         }
@@ -18,8 +18,8 @@
     function updateCalisan(Calisan $calisan) {
         try {
             $connection = connect();
-            $sql = "UPDATE calisan SET isim='{$calisan->isim}', email='{$calisan->email}', calisma_baslangic='{$calisan->calisma_balsangic}',
-                    calisma_bitis='{$calisan->calisma_bitis}', maas={$calisan->maas}, aktif={$calisan->aktif} 
+            $sql = "UPDATE calisan SET isim='{$calisan->isim}', email='{$calisan->email}', calisma_baslangic='{$calisan->calisma_baslangic}',
+                    calisma_bitis='{$calisan->calisma_bitis}', maas={$calisan->maas}, aktif={$calisan->aktif}, ise_giris_tarihi='{$calisan->ise_giris_tarihi}' 
                     WHERE id={$calisan->id}";
 
             $result = $connection->exec($sql);
@@ -50,7 +50,7 @@
             $calisanlar = array();
             while($row = $result->fetch()) {
                 array_push($calisanlar, new Calisan($row['id'], $row['isim'], $row['email'], $row['calisma_baslangic'],
-                            $row['calisma_bitis'], $row['maas'], $row['aktif']));
+                            $row['calisma_bitis'], $row['maas'], $row['aktif'], $row['ise_giris_tarihi']));
             }
 
             return $calisanlar;
@@ -68,7 +68,7 @@
             $result = $connection->query($sql);
             $row = $result->fetch();
 
-            $calisan = new Calisan($row['id'], $row['isim'], $row['email'], $row['calisma_baslangic'], $row['calisma_bitis'], $row['maas'], $row['aktif']);
+            $calisan = new Calisan($row['id'], $row['isim'], $row['email'], $row['calisma_baslangic'], $row['calisma_bitis'], $row['maas'], $row['aktif'], $row['ise_giris_tarihi']);
             return $calisan;
         }
         catch(PDOException $e) {
