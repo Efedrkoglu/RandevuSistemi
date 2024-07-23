@@ -59,7 +59,7 @@
                     echo "<td>" . $calisan->calisma_baslangic . "</td>";
                     echo "<td>" . $calisan->calisma_bitis . "</td>";
                     echo "<td>" . $calisan->ise_giris_tarihi . "</td>";
-                    echo "<td>" . $calisan->maas . "</td>";
+                    echo "<td>" . $calisan->maas . "₺</td>";
                     if($calisan->aktif == 1)
                         echo "<td>Aktif</td>";
                     else 

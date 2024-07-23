@@ -37,9 +37,15 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="musteri.php" class="sidebar-link" style="text-decoration: none;">
-                        <i class="lni lni-customer"></i>
-                        <span>Müşteriler</span>
+                    <a href="randevu.php" class="sidebar-link" style="text-decoration: none;">
+                        <i class="lni lni-calendar"></i>
+                        <span>Randevular</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="hizmet.php" class="sidebar-link" style="text-decoration: none;">
+                        <i class="lni lni-cut"></i>
+                        <span>Hizmetler</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
