@@ -40,6 +40,7 @@
     <table class="table table-hover">
         <thead class="table-dark">
             <tr>
+                <th>#</th>
                 <th>İsim</th>
                 <th>E-mail</th>
                 <th>Telefon</th>
@@ -53,9 +54,10 @@
         <tbody>
             <?php 
                 $calisanlar = selectCalisan();
-
+                $i = 1;
                 foreach($calisanlar as $calisan) {
                     echo "<tr>";
+                    echo "<td>" . $i . "</td>";
                     echo "<td>" . $calisan->isim . "</td>";
                     echo "<td>" . $calisan->email . "</td>";
                     echo "<td>" . $calisan->tel_no . "</td>";
@@ -66,6 +68,7 @@
                     echo "<td><a href='calisanDuzenle.php?edit=" . $calisan->id . "' class='btn btn-sm' style='background-color: transparent; color: black;'><i class='lni lni-pencil-alt' style='font-size: 1.3rem;'></i></a>";
                     echo "<button onclick='confirmDelete(" . $calisan->id . ")' class='btn btn-sm' style='background-color: transparent; color: red;'><i class='lni lni-trash-can' style='font-size: 1.3rem;'></i></button></td>";
                     echo "</tr>";
+                    $i++;
                 }
             ?>
         </tbody>

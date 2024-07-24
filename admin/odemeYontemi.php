@@ -76,19 +76,22 @@
                 <div class="card-body">
                     <table class="table table-hover">
                         <thead class="table-dark">
+                            <th>#</th>
                             <th>Ödeme Yöntemi</th>
                             <th>İşlemler</th>
                         </thead>
                         <tbody>
                             <?php 
                                 $odemeyontemleri = selectOdemeYontemi();
-
+                                $i = 1;
                                 foreach($odemeyontemleri as $odemeyontemi) {
                                     echo "<tr>";
+                                    echo "<td>" . $i . "</td>";
                                     echo "<td>" . $odemeyontemi->ad . "</td>";
                                     echo "<td><a href='?edit=" . $odemeyontemi->id . "' class='btn btn-sm' style='background-color: transparent; color: black;'><i class='lni lni-pencil-alt' style='font-size: 1.3rem;'></i></a>";
                                     echo "<button onclick='confirmDelete(" . $odemeyontemi->id . ")' class='btn btn-sm' style='background-color: transparent; color: red;'><i class='lni lni-trash-can' style='font-size: 1.3rem;'></i></button></td>";
                                     echo "</tr>";
+                                    $i++;
                                 }
                             ?>
                         </tbody>

@@ -32,7 +32,8 @@
 </div>
 
 <div class="container mb-3 mt-5">
-    <a href="hizmetEkle.php" class="btn btn-success btn-sm">Hizmet Ekle</a>
+    <h3>Hizmetler</h3>
+    <a href="hizmetEkle.php" class="btn btn-success btn-sm mt-2">Hizmet Ekle</a>
     <hr>
 </div>
 
@@ -40,6 +41,7 @@
     <table class="table table-hover">
         <thead class="table-dark">
             <tr>
+                <th>#</th>
                 <th>Ad</th>
                 <th>Açıklama</th>
                 <th>Süre</th>
@@ -50,9 +52,10 @@
         <tbody>
             <?php 
                 $hizmetler = selectHizmet();
-
+                $i = 1;
                 foreach($hizmetler as $hizmet) {
                     echo "<tr>";
+                    echo "<td>" . $i . "</td>";
                     echo "<td>" . $hizmet->ad . "</td>";
                     echo "<td>" . $hizmet->aciklama . "</td>";
                     echo "<td>" . $hizmet->sure . " dk</td>";
@@ -60,6 +63,7 @@
                     echo "<td><a href='hizmetDuzenle.php?edit=" . $hizmet->id . "' class='btn btn-sm' style='background-color: transparent; color: black;'><i class='lni lni-pencil-alt' style='font-size: 1.3rem;'></i></a>";
                     echo "<button onclick='confirmDelete(" . $hizmet->id . ")' class='btn btn-sm' style='background-color: transparent; color: red;'><i class='lni lni-trash-can' style='font-size: 1.3rem;'></i></button></td>";
                     echo "</tr>";
+                    $i++;
                 }
             ?>
         </tbody>
