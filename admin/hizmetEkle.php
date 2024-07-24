@@ -1,8 +1,9 @@
-<?php $title="Hizmet Ekle";?>
-<?php include('sidebar.php');?>
-<?php include('code/HizmetQuerries.php');?>
+<?php
+    ob_start();
+    $title="Hizmet Ekle";
+    include('sidebar.php');
+    include('code/HizmetQuerries.php');
 
-<?php 
     if(isset($_POST['kaydet'])) {
         $hizmet = new Hizmet(
             1,
@@ -16,6 +17,7 @@
         header("Location: hizmet.php");
         exit();
     }
+    ob_end_flush();
 ?>
 
 <div class="container-fluid mt-5">
@@ -33,7 +35,7 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col">
-                                <input type="text" class="form-control" name="aciklama" placeholder="Açıklama">
+                                <input type="textarea" class="form-control" name="aciklama" placeholder="Açıklama">
                             </div>
                         </div>
                         <div class="row mb-3">

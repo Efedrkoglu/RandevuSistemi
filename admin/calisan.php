@@ -1,14 +1,15 @@
-<?php $title="Çalışanlar";?>
-<?php include('sidebar.php')?>
-<?php include('code/CalisanQuerries.php');?>
-
 <?php
+    ob_start();
+    $title = "Çalışanlar";
+    include('sidebar.php');
+    include('code/CalisanQuerries.php');
     if(isset($_GET['delete'])) {
         $calisan = selectCalisanById($_GET['delete']);
         deleteCalisan($calisan);
         header("Location: " . $_SERVER['PHP_SELF']);
         exit();
     }
+    ob_end_flush();
 ?>
 
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -30,7 +31,8 @@
 </div>
 
 <div class="container mb-3 mt-5">
-    <a href="calisanEkle.php" class="btn btn-success btn-sm">Çalışan Ekle</a>
+    <h3>Çalışanlar</h3>
+    <a href="calisanEkle.php" class="btn btn-success btn-sm mt-2">Çalışan Ekle</a>
     <hr>
 </div>
 

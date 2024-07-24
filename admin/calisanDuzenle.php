@@ -1,8 +1,9 @@
-<?php $title="Çalışan Ekle";?>
-<?php include('sidebar.php');?>
-<?php include('code/CalisanQuerries.php');?>
+<?php
+    ob_start();
+    $title = "Calışan Ekle";
+    include('sidebar.php');
+    include('code/CalisanQuerries.php');
 
-<?php 
     if(isset($_GET['edit'])) {
         $calisan = selectCalisanById($_GET['edit']);
 
@@ -36,6 +37,7 @@
         header("Location: calisan.php");
         exit();
     }
+    ob_end_flush();
 ?>
 
 <div class="container-fluid mt-5">

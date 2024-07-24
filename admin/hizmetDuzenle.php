@@ -1,8 +1,9 @@
-<?php $title="Hizmet Düzenle";?>
-<?php include('sidebar.php');?>
-<?php include('code/HizmetQuerries.php');?>
+<?php
+    ob_start();
+    $title="Hizmet Düzenle";
+    include('sidebar.php');
+    include('code/HizmetQuerries.php');
 
-<?php 
     if(isset($_GET['edit'])) {
         $hizmet = selectHizmetById($_GET['edit']);
     }
@@ -17,6 +18,7 @@
         header("Location: hizmet.php");
         exit();
     }
+    ob_end_flush();
 ?>
 
 <div class="container-fluid mt-5">

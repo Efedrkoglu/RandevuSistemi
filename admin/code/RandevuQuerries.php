@@ -33,7 +33,7 @@
         }
     }
 
-    function deleteRandveu(Randevu $randevu) {
+    function deleteRandevu(Randevu $randevu) {
         try {
             $connection = connect();
             $sql = "DELETE FROM randevu WHERE id={$randevu->id}";

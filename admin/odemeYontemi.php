@@ -1,34 +1,34 @@
 <?php
-ob_start();
-$title="Ödeme Yöntemleri";
-include('code/OdemeYontemiQuerries.php');
-include('sidebar.php');
+    ob_start();
+    $title="Ödeme Yöntemleri";
+    include('code/OdemeYontemiQuerries.php');
+    include('sidebar.php');
 
-if(isset($_POST['kaydet'])) {
-    $odemeyontemiId = $_POST['id'];
-    $odemeyontemiAd = $_POST['ad'];
+    if(isset($_POST['kaydet'])) {
+        $odemeyontemiId = $_POST['id'];
+        $odemeyontemiAd = $_POST['ad'];
 
-    if(!empty($odemeyontemiId)) 
-        updateOdemeYontemi(new OdemeYontemi($odemeyontemiId, $odemeyontemiAd));
-    else 
-        insertOdemeYontemi(new OdemeYontemi(1, $odemeyontemiAd));
+        if(!empty($odemeyontemiId)) 
+            updateOdemeYontemi(new OdemeYontemi($odemeyontemiId, $odemeyontemiAd));
+        else 
+            insertOdemeYontemi(new OdemeYontemi(1, $odemeyontemiAd));
 
-    header("Location: " . $_SERVER['PHP_SELF']);
-    exit();
-}
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit();
+    }
 
-if(isset($_POST['vazgec'])) {
-    header("Location: " . $_SERVER['PHP_SELF']);
-    exit();
-}
+    if(isset($_POST['vazgec'])) {
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit();
+    }
 
-if(isset($_GET['delete'])) {
-    $odemeyontemi = selectOdemeYontemiById($_GET['delete']);
-    deleteOdemeYontemi($odemeyontemi);
-    header("Location: " . $_SERVER['PHP_SELF']);
-    exit();
-}
-ob_end_flush();
+    if(isset($_GET['delete'])) {
+        $odemeyontemi = selectOdemeYontemiById($_GET['delete']);
+        deleteOdemeYontemi($odemeyontemi);
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit();
+    }
+    ob_end_flush();
 ?>
 
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">

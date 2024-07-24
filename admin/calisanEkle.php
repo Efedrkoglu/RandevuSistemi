@@ -1,8 +1,9 @@
-<?php $title="Çalışan Ekle";?>
-<?php include('sidebar.php');?>
-<?php include('code/CalisanQuerries.php');?>
+<?php
+    ob_start();
+    $title="Çalışan Ekle";
+    include('sidebar.php');
+    include('code/CalisanQuerries.php');
 
-<?php 
     if(isset($_POST['kaydet'])) {
         $isim = $_POST['ad'] . " " . $_POST['soyad'];
         $calisan = new Calisan(
@@ -20,6 +21,7 @@
         header("Location: calisan.php");
         exit();
     }
+    ob_end_flush();
 ?>
 
 <div class="container-fluid mt-5">

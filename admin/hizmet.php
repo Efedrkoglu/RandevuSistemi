@@ -1,14 +1,16 @@
-<?php $title="Çalışanlar";?>
-<?php include('sidebar.php')?>
-<?php include('code/HizmetQuerries.php');?>
-
 <?php
+    ob_start();
+    $title="Çalışanlar";
+    include('sidebar.php');
+    include('code/HizmetQuerries.php');
+
     if(isset($_GET['delete'])) {
         $hizmet = selectHizmetById($_GET['delete']);
         deleteHizmet($hizmet);
         header("Location: " . $_SERVER['PHP_SELF']);
         exit();
     }
+    ob_end_flush();
 ?>
 
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
