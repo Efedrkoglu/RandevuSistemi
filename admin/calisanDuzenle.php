@@ -28,6 +28,7 @@
         $isim = $_POST['ad'] . " " . $_POST['soyad'];
         $calisan->isim = $isim;
         $calisan->email = $_POST['email'];
+        $calisan->tel_no = $_POST['tel_no'];
         $calisan->calisma_baslangic = $_POST['calisma_baslangic'];
         $calisan->calisma_bitis = $_POST['calisma_bitis'];
         $calisan->ise_giris_tarihi = $_POST['ise_giris_tarihi'];
@@ -58,6 +59,9 @@
                         <div class="row mb-3">
                             <div class="col">
                                 <input type="email" class="form-control" name="email" placeholder="E-mail" value="<?php echo $calisan->email ?>">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" name="tel_no" placeholder="Telefon Numarası" value="<?php echo $calisan->tel_no ?>">
                             </div>
                         </div>
                         <div class="row mb-3">

@@ -42,11 +42,11 @@
             <tr>
                 <th>İsim</th>
                 <th>E-mail</th>
+                <th>Telefon</th>
                 <th>Mesai Başlangıç</th>
                 <th>Mesai Bitiş</th>
                 <th>İşe Başlama Tarihi</th>
                 <th>Maaş</th>
-                <th>Aktif</th>
                 <th>İşlemler</th>
             </tr>
         </thead>
@@ -58,14 +58,11 @@
                     echo "<tr>";
                     echo "<td>" . $calisan->isim . "</td>";
                     echo "<td>" . $calisan->email . "</td>";
+                    echo "<td>" . $calisan->tel_no . "</td>";
                     echo "<td>" . $calisan->calisma_baslangic . "</td>";
                     echo "<td>" . $calisan->calisma_bitis . "</td>";
                     echo "<td>" . $calisan->ise_giris_tarihi . "</td>";
                     echo "<td>" . $calisan->maas . "₺</td>";
-                    if($calisan->aktif == 1)
-                        echo "<td>Aktif</td>";
-                    else 
-                        echo "<td>Aktif Değil</td>";
                     echo "<td><a href='calisanDuzenle.php?edit=" . $calisan->id . "' class='btn btn-sm' style='background-color: transparent; color: black;'><i class='lni lni-pencil-alt' style='font-size: 1.3rem;'></i></a>";
                     echo "<button onclick='confirmDelete(" . $calisan->id . ")' class='btn btn-sm' style='background-color: transparent; color: red;'><i class='lni lni-trash-can' style='font-size: 1.3rem;'></i></button></td>";
                     echo "</tr>";

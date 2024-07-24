@@ -13,8 +13,8 @@
             $_POST['calisma_baslangic'],
             $_POST['calisma_bitis'],
             $_POST['maas'],
-            1,
-            $_POST['ise_giris_tarihi']
+            $_POST['ise_giris_tarihi'],
+            $_POST['tel_no']
         );
 
         insertCalisan($calisan);
@@ -43,6 +43,9 @@
                         <div class="row mb-3">
                             <div class="col">
                                 <input type="email" class="form-control" name="email" placeholder="E-mail">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" name="tel_no" placeholder="Telefon Numarası">
                             </div>
                         </div>
                         <div class="row mb-3">
