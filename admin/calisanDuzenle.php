@@ -1,6 +1,6 @@
 <?php
     ob_start();
-    $title = "Calışan Ekle";
+    $title = "Calışan Düzenle";
     include('sidebar.php');
     include('code/CalisanQuerries.php');
 

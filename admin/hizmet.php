@@ -1,6 +1,6 @@
 <?php
     ob_start();
-    $title="Çalışanlar";
+    $title="Hizmetler";
     include('sidebar.php');
     include('code/HizmetQuerries.php');
 
