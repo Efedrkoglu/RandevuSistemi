@@ -110,6 +110,13 @@
 </div>
 
 <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        var infoModal = document.getElementById('infoModal');
+        infoModal.addEventListener('hidden.bs.modal', function (event) {
+            clearcontent();
+        });
+    });
+
     async function fetchMusteriData(id) {
         const response = await fetch(`code/GetMusteriById.php?id=${id}`);
         const data = await response.json();
