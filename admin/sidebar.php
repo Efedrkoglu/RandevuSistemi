@@ -49,6 +49,18 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" style="text-decoration: none;">
+                        <i class="lni lni-star-half"></i>
+                        <span>Ayın Elemanı</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="odemeYontemi.php" class="sidebar-link" style="text-decoration: none;">
+                        <i class="lni lni-credit-cards"></i>
+                        <span>Ödeme Yöntemleri</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
                     <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
                      data-bs-target="#gelirgider" aria-expanded="false" aria-controls="gelirgider" style="text-decoration: none;">
                         <i class="lni lni-stats-up"></i>
@@ -56,10 +68,10 @@
                     </a>
                     <ul id="gelirgider" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link" style="text-decoration: none;">Gelir</a>
+                            <a href="#" class="sidebar-link" style="text-decoration: none;">Gelirler</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link" style="text-decoration: none;">Gider</a>
+                            <a href="#" class="sidebar-link" style="text-decoration: none;">Giderler</a>
                         </li>
                     </ul>
                 </li>
