@@ -45,7 +45,7 @@
                 <th>İsim</th>
                 <th>E-mail</th>
                 <th>Telefon</th>
-                <th>Mesai Saatleri</th>
+                <th>Çalışma Saatleri</th>
                 <th>İşe Başlama Tarihi</th>
                 <th>Maaş</th>
                 <th>İşlemler</th>

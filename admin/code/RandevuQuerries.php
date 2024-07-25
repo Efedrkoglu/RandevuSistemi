@@ -48,7 +48,7 @@
     function selectRandevu() {
         try {
             $connection = connect();
-            $sql = "SELECT * FROM randevu ORDER BY id";
+            $sql = "SELECT * FROM randevu ORDER BY YEAR(tarih) DESC, MONTH(tarih) DESC, DAY(tarih) DESC";
 
             $result = $connection->query($sql);
             $randevular = array();
