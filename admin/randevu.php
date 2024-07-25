@@ -83,7 +83,7 @@
                     foreach($randevular as $randevu) {
                         $time = explode(" ", $randevu->tarih);
                         $tarih = $time[0];
-                        $saat = $time[1];
+                        $saat = date('H:i', strtotime($time[1]));
 
                         echo "<tr>";
                         echo "<td>" . $i . "</td>";

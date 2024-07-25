@@ -45,8 +45,7 @@
                 <th>İsim</th>
                 <th>E-mail</th>
                 <th>Telefon</th>
-                <th>Mesai Başlangıç</th>
-                <th>Mesai Bitiş</th>
+                <th>Mesai Saatleri</th>
                 <th>İşe Başlama Tarihi</th>
                 <th>Maaş</th>
                 <th>İşlemler</th>
@@ -57,13 +56,15 @@
                 $calisanlar = selectCalisan();
                 $i = 1;
                 foreach($calisanlar as $calisan) {
+                    $calisma_baslangic = date('H:i', strtotime($calisan->calisma_baslangic));
+                    $calisma_bitis = date('H:i', strtotime($calisan->calisma_bitis));
+
                     echo "<tr>";
                     echo "<td>" . $i . "</td>";
                     echo "<td>" . $calisan->isim . "</td>";
                     echo "<td>" . $calisan->email . "</td>";
                     echo "<td>" . $calisan->tel_no . "</td>";
-                    echo "<td>" . $calisan->calisma_baslangic . "</td>";
-                    echo "<td>" . $calisan->calisma_bitis . "</td>";
+                    echo "<td>" . $calisma_baslangic . "-" . $calisma_bitis . "</td>";
                     echo "<td>" . $calisan->ise_giris_tarihi . "</td>";
                     echo "<td>" . $calisan->maas . "₺</td>";
                     echo "<td><a href='calisanDuzenle.php?edit=" . $calisan->id . "' class='btn btn-sm' style='background-color: transparent; color: black;'><i class='lni lni-pencil-alt' style='font-size: 1.3rem;'></i></a>";
