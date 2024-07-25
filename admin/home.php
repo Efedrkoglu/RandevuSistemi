@@ -1,3 +1,4 @@
+<?php include('code/CheckAuthorized.php')?>
 <?php $title="Anasayfa";?>
 <?php include('sidebar.php');?>
 

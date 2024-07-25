@@ -1,3 +1,4 @@
+<?php include('code/CheckAuthorized.php')?>
 <?php
     ob_start();
     $title="Hizmet Ekle";

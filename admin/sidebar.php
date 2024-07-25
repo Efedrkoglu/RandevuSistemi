@@ -77,7 +77,7 @@
                 </li>
             </ul>
             <div class="sidebar-footer">
-                <a href="#" class="sidebar-link" style="text-decoration: none;">
+                <a href="logout.php" class="sidebar-link" style="text-decoration: none;">
                     <i class="lni lni-exit"></i>
                     <span>Çıkış</span>
                 </a>
