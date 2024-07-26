@@ -1,0 +1,147 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+#prev {
+    background-color: lightgray;
+}
+
+#prev:active {
+    transform: scale(0.97);
+}
+
+#prev:hover {
+    background-color: #c4c4c4;
+}
+
+#prev:focus {
+    outline: 0;
+}
+
+#next {
+    background-color: black;
+    color: white;
+}
+
+#next:hover {
+    background-color: #545454;
+    color: white;
+}
+
+#next:focus {
+    outline: 0;
+}
+
+#next:active {
+    transform: scale(0.97);
+}
+
+.form-container {
+    width: 560px;
+    height: 650px;
+    margin: 8% auto;
+    border: 2px solid;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+#form-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.form-container form {
+    width: 400px;
+    margin-top: 30px;
+    position: absolute;
+    top: 170px;
+    left: 80px;
+    transition: 0.35s;
+}
+
+form input {
+    width: 100%;
+    padding: 10px 5px;
+    margin: 0px 0;
+    border: 0;
+    border-bottom: 1px solid #999;
+    outline: none;
+    background: transparent;
+}
+
+.btn-box {
+    width: 100%;
+    margin: 70px auto;
+    text-align: center;
+}
+
+form button {
+    width: 90px;
+    height: 35px;
+    margin: 0 10px;
+    background: black;
+    color: white;
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+
+#submitBtn {
+    width: 125px;
+    height: 35px;
+    margin: 0 10px;
+    background: black;
+    color: white;
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+
+#form-2 {
+    left: 650px;
+}
+
+#form-3 {
+    left: 650px;
+}
+
+.step-row {
+    width: 556px;
+    height: 50px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    background-color: lightgray;
+}
+
+.step-col {
+    width: 184px;
+    text-align: center;
+    position: relative;
+    color: white;
+}
+
+#progress {
+    position: absolute;
+    height: 50px;
+    width: 184px;
+    background-color: black;
+    transition: 0.4s;
+}
+
+#progress::after {
+    content: '';
+    height: 0;
+    width: 0;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    position: absolute;
+    right: -25px;
+    top: 0;
+    border-left: 25px solid black;
+}
