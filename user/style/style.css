@@ -60,6 +60,15 @@ body {
     transition: 0.35s;
 }
 
+.form-container .confirm {
+    width: 400px;
+    margin-top: 10px;
+    position: absolute;
+    top: 170px;
+    left: 80px;
+    transition: 0.35s;
+}
+
 form input {
     width: 100%;
     padding: 10px 5px;
@@ -76,6 +85,11 @@ form input {
     text-align: center;
 }
 
+.backbtns {
+    background-color: lightgray;
+}
+
+
 form button {
     width: 90px;
     height: 35px;
@@ -87,6 +101,19 @@ form button {
     outline: none;
     cursor: pointer;
 }
+
+.confirm button {
+    width: 90px;
+    height: 35px;
+    margin: 0 10px;
+    background: black;
+    color: white;
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+
 
 #submitBtn {
     width: 125px;
@@ -144,4 +171,13 @@ form button {
     right: -25px;
     top: 0;
     border-left: 25px solid black;
+}
+
+button:disabled {
+    background-color: lightgray;
+    cursor: not-allowed;
+}
+
+button:active {
+    transform: scale(0.95);
 }

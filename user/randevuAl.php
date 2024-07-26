@@ -31,12 +31,15 @@
                     <h3 style="text-align: center; margin: 30px 0;">Randevu Al</h3>
                     <form action="" id="form-1">
                         <h4 id="form-title">Bilgilerinizi Giriniz</h4>
-                        <input type="text" name="name" placeholder="Ad Soyad" required>
-                        <input type="text" name="email" placeholder="E-mail" required>
-                        <input type="text" name="tel_no" placeholder="Telefon Numarası" required>
+                        <label for="name"><strong>Ad Soyad</strong></label>
+                        <input type="text" id="name" name="name">
+                        <label for="email" style="margin-top: 10px;"><strong>E-mail</strong></label>
+                        <input type="text" id="email" name="email">
+                        <label for="tel_no" style="margin-top: 10px;"><strong>Telefon Numarası</strong></label>
+                        <input type="text" id="tel_no" name="tel_no">
 
                         <div class="btn-box">
-                            <button type="button" id="next1">İleri <i class="lni lni-arrow-right"></i></button>
+                            <button type="button" id="next1" disabled>İleri <i class="lni lni-arrow-right"></i></button>
                         </div>
                     </form>
 
@@ -52,7 +55,7 @@
                                 }
                             ?>
                         </select>
-                        <select id="calisan" name="calisan">
+                        <select id="calisan" name="calisan" disabled>
                             <option selected disabled>Çalışan Seçiniz</option>
                             <?php
                                 $calisanlar = selectCalisan();
@@ -62,28 +65,32 @@
                                 }
                             ?>
                         </select><br>
-                        <label for="tarih" style="margin-top: 20px;">Tarih</label>
+                        <label for="tarih" style="margin-top: 20px;"><strong>Tarih</strong></label>
                         <input type="date" id="tarih" name="tarih" disabled>
-                        <label for="saat" style="margin-top: 20px;">Saat</label>
+                        <label for="saat" style="margin-top: 20px;"><strong>Saat</strong></label>
                         <input type="time" id="saat" name="saat" disabled>
 
                         <div class="btn-box">
-                            <button type="button" id="back1"><i class="lni lni-arrow-left"></i> Geri</button>
-                            <button type="button" id="next2">İleri <i class="lni lni-arrow-right"></i></button>
+                            <button type="button" id="back1" style="background-color: gray;"><i class="lni lni-arrow-left"></i> Geri</button>
+                            <button type="button" id="next2" disabled>İleri <i class="lni lni-arrow-right"></i></button>
                         </div>
                     </form>
 
-                    <form action="" id="form-3">
+                    <div id="form-3" class="confirm">
                         <h4 id="form-title">Randevu Bilgileri</h4>
-                        <input type="text" name="name" placeholder="Ad Soyad" required>
-                        <input type="text" name="email" placeholder="E-mail" required>
-                        <input type="text" name="tel_no" placeholder="Telefon Numarası" required>
-
+                        <p><strong>Ad Soyad:</strong> <span id="confirm-name"></span></p>
+                        <p><strong>E-mail:</strong> <span id="confirm-email"></span></p>
+                        <p><strong>Telefon Numarası:</strong> <span id="confirm-tel_no"></span></p>
+                        <p><strong>Hizmet:</strong> <span id="confirm-hizmet"></span></p>
+                        <p><strong>Çalışan:</strong> <span id="confirm-calisan"></span></p>
+                        <p><strong>Tarih:</strong> <span id="confirm-date"></span></p>
+                        <p><strong>Saat:</strong> <span id="confirm-time"></span></p>
+                        
                         <div class="btn-box">
-                            <button type="button" id="back2"><i class="lni lni-arrow-left"></i> Geri</button>
-                            <button type="submit" id="submitBtn">Randevu Al</button>
+                            <button type="button" id="back2" style="background-color: gray;"><i class="lni lni-arrow-left"></i> Geri</button>
+                            <button type="button" id="submitBtn">Randevu Al</button>
                         </div>
-                    </form>
+                    </div>
 
                     <div class="step-row">
                         <div id="progress"></div>
@@ -113,43 +120,98 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
-        var form1 = document.getElementById("form-1");
-        var form2 = document.getElementById("form-2");
-        var form3 = document.getElementById("form-3");
+        document.addEventListener('DOMContentLoaded', () => {
+            const form1 = document.getElementById('form-1');
+            const form2 = document.getElementById('form-2');
+            const form3 = document.getElementById('form-3');
 
-        var next1 = document.getElementById("next1");
-        var next2 = document.getElementById("next2");
-        var back1 = document.getElementById("back1");
-        var back2 = document.getElementById("back2");
+            const next1 = document.getElementById('next1');
+            const next2 = document.getElementById('next2');
+            const back1 = document.getElementById('back1');
+            const back2 = document.getElementById('back2');
+            const submitBtn = document.getElementById('submitBtn');
 
-        var progress = document.getElementById("progress");
-    
-        document.getElementById("calisan").addEventListener('change', () => {
-            document.getElementById("tarih").disabled = false;
-            document.getElementById("saat").disabled = false;
+            const progress = document.getElementById('progress');
+
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const telNoInput = document.getElementById('tel_no');
+
+            const hizmetInput = document.getElementById('hizmet');
+            const calisanInput = document.getElementById('calisan');
+            const tarihInput = document.getElementById('tarih');
+            const saatInput = document.getElementById('saat');
+
+            function checkForm1() {
+                if (nameInput.value && emailInput.value && telNoInput.value) {
+                    next1.disabled = false;
+                } else {
+                    next1.disabled = true;
+                }
+            }
+
+            function checkForm2() {
+                if (hizmetInput.value && calisanInput.value && tarihInput.value && saatInput.value) {
+                    next2.disabled = false;
+                } else {
+                    next2.disabled = true;
+                }
+            }
+
+            nameInput.addEventListener('input', checkForm1);
+            emailInput.addEventListener('input', checkForm1);
+            telNoInput.addEventListener('input', checkForm1);
+
+            hizmetInput.addEventListener('change', () => {
+                calisanInput.disabled = false;
+                checkForm2();
+            });
+            calisanInput.addEventListener('change', () => {
+                tarihInput.disabled = false;
+                saatInput.disabled = false;
+                checkForm2();
+            });
+            tarihInput.addEventListener('change', checkForm2);
+            saatInput.addEventListener('change', checkForm2);
+
+            next1.onclick = function() {
+                form1.style.left = "-550px";
+                form2.style.left = "80px";
+                progress.style.width = "368px";
+            };
+            back1.onclick = function() {
+                form1.style.left = "80px";
+                form2.style.left = "650px";
+                progress.style.width = "184px";
+            };
+
+            next2.onclick = function() {
+                var hizmet = document.getElementById("hizmet");
+                var selectedHizmet = hizmet.selectedIndex;
+                var hizmetText = hizmet.options[selectedHizmet].text;
+
+                var calisan = document.getElementById("calisan");
+                var selectedCalisan = calisan.selectedIndex;
+                var calisanText = calisan.options[selectedCalisan].text;
+
+                document.getElementById("confirm-name").innerHTML = document.getElementById("name").value;
+                document.getElementById("confirm-email").innerHTML = document.getElementById("email").value;
+                document.getElementById("confirm-tel_no").innerHTML = document.getElementById("tel_no").value;
+                document.getElementById("confirm-hizmet").innerHTML = hizmetText;
+                document.getElementById("confirm-calisan").innerHTML = calisanText;
+                document.getElementById("confirm-date").innerHTML = document.getElementById("tarih").value;
+                document.getElementById("confirm-time").innerHTML = document.getElementById("saat").value;
+
+                form2.style.left = "-550px";
+                form3.style.left = "80px";
+                progress.style.width = "554px";
+            };
+            back2.onclick = function() {
+                form2.style.left = "80px";
+                form3.style.left = "650px";
+                progress.style.width = "368px";
+            };
         });
-
-        next1.onclick = function() {
-            form1.style.left = "-550px";
-            form2.style.left = "80px";
-            progress.style.width = "368px";
-        }
-        back1.onclick = function() {
-            form1.style.left = "80px";
-            form2.style.left = "650px";
-            progress.style.width = "184px";
-        }
-
-        next2.onclick = function() {
-            form2.style.left = "-550px";
-            form3.style.left = "80px";
-            progress.style.width = "554px";
-        }
-        back2.onclick = function() {
-            form2.style.left = "80px";
-            form3.style.left = "650px";
-            progress.style.width = "368px";
-        }
     </script>
 </body>
 </html>
