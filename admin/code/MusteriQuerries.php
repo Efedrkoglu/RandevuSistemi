@@ -72,4 +72,19 @@
             die($e->getMessage());
         }
     }
+
+    function selectLastMusteriId() {
+        try {
+            $connection = connect();
+            $sql = "SELECT MAX(id) as id FROM musteri";
+
+            $result = $connection->query($sql);
+            $row = $result->fetch();
+
+            return $row['id'];
+        }
+        catch(PDOException $e) {
+            die($e->getMessage());
+        }
+    }
 ?>

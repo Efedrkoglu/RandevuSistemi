@@ -233,6 +233,37 @@
                 form3.style.left = "650px";
                 progress.style.width = "368px";
             };
+
+            submitBtn.onclick = function() {
+                var formData1 = new FormData(form1);
+                var formData2 = new FormData(form2);
+
+                var combinedData = new FormData();
+
+                formData1.forEach((value, key) => {
+                    combinedData.append(key, value);
+                });
+
+                formData2.forEach((value, key) => {
+                    combinedData.append(key, value);
+                });
+
+                if (odemeYontemiInput.value) {
+                    combinedData.append('odemeyontemi', odemeYontemiInput.value);
+                }
+
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '../admin/code/CreateRandevu.php', true);
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        console.log('Forms submitted successfully:', xhr.responseText);
+                        window.location.reload();
+                    } else {
+                        console.error('Error submitting forms:', xhr.statusText);
+                    }
+                };
+                xhr.send(combinedData);
+            }
         });
     </script>
 </body>
