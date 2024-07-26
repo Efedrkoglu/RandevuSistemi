@@ -1,5 +1,6 @@
 <?php include('../admin/code/HizmetQuerries.php');?>
 <?php include('../admin/code/CalisanQuerries.php');?>
+<?php include('../admin/code/OdemeYontemiQuerries.php');?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -86,9 +87,20 @@
                         <p><strong>Tarih:</strong> <span id="confirm-date"></span></p>
                         <p><strong>Saat:</strong> <span id="confirm-time"></span></p>
                         
+                        <select id="odemeyontemi" name="odemeyontemi">
+                            <option selected disabled>Ödeme Yöntemi</option>
+                            <?php
+                                $odemeyontemleri = selectOdemeYontemi();
+
+                                foreach($odemeyontemleri as $odemeyontemi) {
+                                    echo "<option value='" . $odemeyontemi->id . "'>" . $odemeyontemi->ad . "</option>";
+                                }
+                            ?>
+                        </select>
+
                         <div class="btn-box">
                             <button type="button" id="back2" style="background-color: gray;"><i class="lni lni-arrow-left"></i> Geri</button>
-                            <button type="button" id="submitBtn">Randevu Al</button>
+                            <button type="button" id="submitBtn" disabled>Randevu Al</button>
                         </div>
                     </div>
 
@@ -103,7 +115,7 @@
             <div class="col-3"></div>
         </div>
     </div>
-    <div class="container-fluid mt-5" style="background-color: black;">
+    <div class="container-fluid mt-2" style="background-color: black;">
         <div class="row">
             <div class="col-3"></div>
             <div class="col-6">
@@ -129,7 +141,6 @@
             const next2 = document.getElementById('next2');
             const back1 = document.getElementById('back1');
             const back2 = document.getElementById('back2');
-            const submitBtn = document.getElementById('submitBtn');
 
             const progress = document.getElementById('progress');
 
@@ -141,6 +152,9 @@
             const calisanInput = document.getElementById('calisan');
             const tarihInput = document.getElementById('tarih');
             const saatInput = document.getElementById('saat');
+
+            const odemeYontemiInput = document.getElementById('odemeyontemi');
+            const submitBtn = document.getElementById('submitBtn');
 
             function checkForm1() {
                 if (nameInput.value && emailInput.value && telNoInput.value) {
@@ -173,6 +187,10 @@
             });
             tarihInput.addEventListener('change', checkForm2);
             saatInput.addEventListener('change', checkForm2);
+
+            odemeYontemiInput.addEventListener('change', () => {
+                submitBtn.disabled = false;
+            });
 
             next1.onclick = function() {
                 form1.style.left = "-550px";
