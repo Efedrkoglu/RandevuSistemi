@@ -70,6 +70,8 @@
                         <input type="date" id="tarih" name="tarih" disabled>
                         <label for="saat" style="margin-top: 20px;"><strong>Saat</strong></label>
                         <input type="time" id="saat" name="saat" disabled>
+                        <label for="randevu_notu" style="margin-top: 20px;"><strong>Randevu Notu</strong></label>
+                        <input type="text" id="randevu_notu" name="randevu_notu" maxlength="70">
 
                         <div class="btn-box">
                             <button type="button" id="back1" style="background-color: gray;"><i class="lni lni-arrow-left"></i> Geri</button>
@@ -78,7 +80,7 @@
                     </form>
 
                     <div id="form-3" class="confirm">
-                        <h4 id="form-title">Randevu Bilgileri</h4>
+                        <h4 id="confirm-title">Randevu Bilgileri</h4>
                         <p><strong>Ad Soyad:</strong> <span id="confirm-name"></span></p>
                         <p><strong>E-mail:</strong> <span id="confirm-email"></span></p>
                         <p><strong>Telefon Numarası:</strong> <span id="confirm-tel_no"></span></p>
@@ -86,6 +88,7 @@
                         <p><strong>Çalışan:</strong> <span id="confirm-calisan"></span></p>
                         <p><strong>Tarih:</strong> <span id="confirm-date"></span></p>
                         <p><strong>Saat:</strong> <span id="confirm-time"></span></p>
+                        <p><strong>Randevu Notu:</strong> <span id="confirm-randevu_notu"></span></p>
                         
                         <select id="odemeyontemi" name="odemeyontemi">
                             <option selected disabled>Ödeme Yöntemi</option>
@@ -115,7 +118,7 @@
             <div class="col-3"></div>
         </div>
     </div>
-    <div class="container-fluid mt-2" style="background-color: black;">
+    <div class="container-fluid mt-1" style="background-color: black;">
         <div class="row">
             <div class="col-3"></div>
             <div class="col-6">
@@ -219,6 +222,7 @@
                 document.getElementById("confirm-calisan").innerHTML = calisanText;
                 document.getElementById("confirm-date").innerHTML = document.getElementById("tarih").value;
                 document.getElementById("confirm-time").innerHTML = document.getElementById("saat").value;
+                document.getElementById("confirm-randevu_notu").innerHTML = document.getElementById("randevu_notu").value;
 
                 form2.style.left = "-550px";
                 form3.style.left = "80px";
