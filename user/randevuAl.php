@@ -115,7 +115,7 @@
             <div class="col-3"></div>
         </div>
     </div>
-    <div class="container-fluid mt-2" style="background-color: black;">
+    <div class="container-fluid mt-5" style="background-color: black;">
         <div class="row">
             <div class="col-3"></div>
             <div class="col-6">
