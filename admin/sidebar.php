@@ -56,24 +56,30 @@
                 </li>
                 <li class="sidebar-item">
                     <a href="odemeYontemi.php" class="sidebar-link" style="text-decoration: none;">
-                        <i class="lni lni-credit-cards"></i>
+                        <i class="lni lni-wallet"></i>
                         <span>Ödeme Yöntemleri</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link has-dropdown collapsed" data-bs-toggle="collapse"
                      data-bs-target="#gelirgider" aria-expanded="false" aria-controls="gelirgider" style="text-decoration: none;">
-                        <i class="lni lni-stats-up"></i>
+                        <i class="lni lni-dollar"></i>
                         <span>Gelir-Gider</span>
                     </a>
                     <ul id="gelirgider" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link" style="text-decoration: none;">Gelirler</a>
+                            <a href="gelir.php" class="sidebar-link" style="text-decoration: none;">Gelirler</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link" style="text-decoration: none;">Giderler</a>
+                            <a href="gider.php" class="sidebar-link" style="text-decoration: none;">Giderler</a>
                         </li>
                     </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link" style="text-decoration: none;">
+                        <i class="lni lni-stats-up"></i>
+                        <span>Analiz</span>
+                    </a>
                 </li>
             </ul>
             <div class="sidebar-footer">
