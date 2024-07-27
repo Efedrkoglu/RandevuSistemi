@@ -67,7 +67,7 @@
                             ?>
                         </select><br>
                         <label for="tarih" style="margin-top: 20px;"><strong>Tarih</strong></label>
-                        <input type="date" id="tarih" name="tarih" disabled>
+                        <input type="date" id="tarih" name="tarih" disabled min="">
                         <label for="saat" style="margin-top: 20px;"><strong>Saat</strong></label>
                         <input type="time" id="saat" name="saat" disabled>
                         <label for="randevu_notu" style="margin-top: 20px;"><strong>Randevu Notu</strong></label>
@@ -159,6 +159,8 @@
             const odemeYontemiInput = document.getElementById('odemeyontemi');
             const submitBtn = document.getElementById('submitBtn');
 
+            let today = new Date().toISOString().split('T')[0];
+
             function checkForm1() {
                 if (nameInput.value && emailInput.value && telNoInput.value) {
                     next1.disabled = false;
@@ -185,6 +187,7 @@
             });
             calisanInput.addEventListener('change', () => {
                 tarihInput.disabled = false;
+                tarihInput.setAttribute('min', today);
                 saatInput.disabled = false;
                 checkForm2();
             });
