@@ -123,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
         xhr.onload = function() {
             if (xhr.status === 200) {
                 console.log('Forms submitted successfully:', xhr.responseText);
+                window.alert("Randevunuz başarıyla oluşturuldu. Lütfen E-posta adresinizi kontrol edin.");
                 window.location.reload();
             } else {
                 console.error('Error submitting forms:', xhr.statusText);
