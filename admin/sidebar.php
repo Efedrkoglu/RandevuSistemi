@@ -76,7 +76,7 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link" style="text-decoration: none;">
+                    <a href="analiz.php" class="sidebar-link" style="text-decoration: none;">
                         <i class="lni lni-stats-up"></i>
                         <span>Analiz</span>
                     </a>
