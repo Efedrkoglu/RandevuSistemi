@@ -39,10 +39,10 @@
         }
     }
 
-    function selectGelir() {
+    function selectGelir($page) {
         try {
             $connection = connect();
-            $sql = "SELECT * FROM gelir ORDER BY YEAR(tarih) DESC, MONTH(tarih) DESC, DAY(tarih) DESC";
+            $sql = "SELECT * FROM gelir ORDER BY YEAR(tarih) DESC, MONTH(tarih) DESC, DAY(tarih) DESC LIMIT 10 OFFSET " . ($page - 1) * 10;
 
             $result = $connection->query($sql);
             $gelirler = array();

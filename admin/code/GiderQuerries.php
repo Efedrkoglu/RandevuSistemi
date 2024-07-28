@@ -39,10 +39,10 @@
         }
     }
 
-    function selectGider() {
+    function selectGider($page) {
         try {
             $connection = connect();
-            $sql = "SELECT * FROM gider ORDER BY YEAR(tarih) DESC, MONTH(tarih) DESC, DAY(tarih) DESC";
+            $sql = "SELECT * FROM gider ORDER BY YEAR(tarih) DESC, MONTH(tarih) DESC, DAY(tarih) DESC LIMIT 10 OFFSET " . ($page - 1) * 10;
 
             $result = $connection->query($sql);
             $giderler = array();

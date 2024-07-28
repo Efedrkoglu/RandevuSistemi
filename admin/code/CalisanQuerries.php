@@ -41,10 +41,10 @@
         }
     }
 
-    function selectCalisan() {
+    function selectCalisan($page) {
         try {
             $connection = connect();
-            $sql = "SELECT * FROM calisan ORDER BY id";
+            $sql = "SELECT * FROM calisan ORDER BY id LIMIT 10 OFFSET " . ($page - 1) * 10;
 
             $result = $connection->query($sql);
             $calisanlar = array();

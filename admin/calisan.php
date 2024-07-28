@@ -4,6 +4,17 @@
     $title = "Çalışanlar";
     include('sidebar.php');
     include('code/CalisanQuerries.php');
+    include('code/Pagination.php');
+    
+    $currentPage = 1;
+    $maxPage = getMaxPage('calisan');
+    if(isset($_GET['page'])) {
+        $currentPage = $_GET['page'];
+    }
+    else {
+        $currentPage = 1;
+    }
+
     if(isset($_GET['delete'])) {
         $calisan = selectCalisanById($_GET['delete']);
         deleteCalisan($calisan);
@@ -53,7 +64,7 @@
         </thead>
         <tbody>
             <?php 
-                $calisanlar = selectCalisan();
+                $calisanlar = selectCalisan($currentPage);
                 $i = 1;
                 foreach($calisanlar as $calisan) {
                     $calisma_baslangic = date('H:i', strtotime($calisan->calisma_baslangic));
@@ -75,6 +86,16 @@
             ?>
         </tbody>
     </table>
+    <a href="?page=<?php echo max(1, $currentPage - 1); ?>" class="btn btn-sm <?php if($currentPage == 1) echo 'disabled';?>" style="background-color: black; color: white;"><i class="lni lni-arrow-left"></i></a>
+    <?php
+        if($maxPage == 0) {
+            echo "0/0";
+        }
+        else {
+            echo $currentPage . "/" . $maxPage; 
+        }
+    ?>
+    <a href="?page=<?php echo min($maxPage, $currentPage + 1); ?>" class="btn btn-sm <?php if($currentPage == $maxPage || $maxPage == 0) echo 'disabled';?>" style="background-color: black; color: white;"><i class="lni lni-arrow-right"></i></a>
 </div>
 
 <script>

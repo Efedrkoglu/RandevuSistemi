@@ -4,6 +4,17 @@
     $title = "Giderler";
     include('sidebar.php');
     include('code/GiderQuerries.php');
+    include('code/Pagination.php');
+
+    $currentPage = 1;
+    $maxPage = getMaxPage("gider");
+    if(isset($_GET['page'])) {
+        $currentPage = $_GET['page'];
+    }
+    else {
+        $currentPage = 1;
+    }
+
     if(isset($_GET['delete'])) {
         $gider = selectGiderById($_GET['delete']);
         deleteGider($gider);
@@ -51,7 +62,7 @@
         </thead>
         <tbody>
             <?php 
-                $giderler = selectGider();
+                $giderler = selectGider($currentPage);
                 $i = 1;
                 foreach($giderler as $gider) {
                     echo "<tr>";
@@ -68,6 +79,16 @@
             ?>
         </tbody>
     </table>
+    <a href="?page=<?php echo max(1, $currentPage - 1); ?>" class="btn btn-secondary btn-sm <?php if($currentPage == 1) echo 'disabled';?>" style="background-color: black; color: white;"><i class="lni lni-arrow-left"></i></a>
+    <?php
+        if($maxPage == 0) {
+            echo "0/0";
+        }
+        else {
+            echo $currentPage . "/" . $maxPage; 
+        }
+    ?>
+    <a href="?page=<?php echo min($maxPage, $currentPage + 1); ?>" class="btn btn-secondary btn-sm <?php if($currentPage == $maxPage || $maxPage == 0) echo 'disabled';?>" style="background-color: black; color: white;"><i class="lni lni-arrow-right"></i></a>
 </div>
 
 <script>

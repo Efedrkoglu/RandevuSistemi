@@ -4,6 +4,17 @@
     $title = "Gelirler";
     include('sidebar.php');
     include('code/GelirQuerries.php');
+    include('code/Pagination.php');
+
+    $currentPage = 1;
+    $maxPage = getMaxPage("gelir");
+    if(isset($_GET['page'])) {
+        $currentPage = $_GET['page'];
+    }
+    else {
+        $currentPage = 1;
+    }
+
     if(isset($_GET['delete'])) {
         $gelir = selectGelirById($_GET['delete']);
         deleteGelir($gelir);
@@ -51,7 +62,7 @@
         </thead>
         <tbody>
             <?php 
-                $gelirler = selectGelir();
+                $gelirler = selectGelir($currentPage);
                 $i = 1;
                 foreach($gelirler as $gelir) {
                     echo "<tr>";
@@ -68,6 +79,16 @@
             ?>
         </tbody>
     </table>
+    <a href="?page=<?php echo max(1, $currentPage - 1); ?>" class="btn btn-secondary btn-sm <?php if($currentPage == 1) echo 'disabled';?>" style="background-color: black; color: white;"><i class="lni lni-arrow-left"></i></a>
+    <?php
+        if($maxPage == 0) {
+            echo "0/0";
+        }
+        else {
+            echo $currentPage . "/" . $maxPage; 
+        }
+    ?>
+    <a href="?page=<?php echo min($maxPage, $currentPage + 1); ?>" class="btn btn-secondary btn-sm <?php if($currentPage == $maxPage || $maxPage == 0) echo 'disabled';?>" style="background-color: black; color: white;"><i class="lni lni-arrow-right"></i></a>
 </div>
 
 <script>

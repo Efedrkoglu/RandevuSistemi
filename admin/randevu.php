@@ -4,6 +4,16 @@
     $title="Randevular";
     include('sidebar.php');
     include('code/RandevuQuerries.php');
+    include('code/Pagination.php');
+
+    $currentPage = 1;
+    $maxPage = getMaxPage("randevu");
+    if(isset($_GET['page'])) {
+        $currentPage = $_GET['page'];
+    }
+    else {
+        $currentPage = 1;
+    }
 
     if(isset($_GET['delete'])) {
         $randevu = selectRandevuById($_GET['delete']);
@@ -78,7 +88,7 @@
             </thead>
             <tbody id="randevuTable">
                 <?php 
-                    $randevular = selectRandevu();
+                    $randevular = selectRandevu($currentPage);
                     $i = 1;
                     foreach($randevular as $randevu) {
                         $time = explode(" ", $randevu->tarih);
@@ -108,6 +118,16 @@
             </tbody>
         </table>
     </div>
+    <a href="?page=<?php echo max(1, $currentPage - 1); ?>" class="btn btn-secondary btn-sm <?php if($currentPage == 1) echo 'disabled';?>" style="background-color: black; color: white;"><i class="lni lni-arrow-left"></i></a>
+    <?php
+        if($maxPage == 0) {
+            echo "0/0";
+        }
+        else {
+            echo $currentPage . "/" . $maxPage; 
+        }
+    ?>
+    <a href="?page=<?php echo min($maxPage, $currentPage + 1); ?>" class="btn btn-secondary btn-sm <?php if($currentPage == $maxPage || $maxPage == 0) echo 'disabled';?>" style="background-color: black; color: white;"><i class="lni lni-arrow-right"></i></a>
 </div>
 
 <script src="script/randevuScript.js"></script>
