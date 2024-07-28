@@ -75,4 +75,22 @@
             die($e->getMessage());
         }
     }
+
+    function selectAyinElemani($month) {
+        try {
+            $connection = connect();
+            $sql = "SELECT calisan.isim, COUNT(randevu.id) AS randevu FROM randevu JOIN calisan
+                    ON randevu.calisan_id = calisan.id WHERE MONTH(randevu.tarih) = '{$month}' GROUP BY calisan.isim ORDER BY randevu DESC";
+
+            $result = $connection->query($sql);
+            $calisanlar = array();
+            while($row = $result->fetch()) {
+                $calisanlar[$row['isim']] = $row['randevu'];
+            }
+            return $calisanlar;
+        }
+        catch(PDOException $e) {
+            die($e->getMessage());
+        }
+    }
 ?>

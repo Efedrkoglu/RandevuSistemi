@@ -49,12 +49,6 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link" style="text-decoration: none;">
-                        <i class="lni lni-star-half"></i>
-                        <span>Ayın Elemanı</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
                     <a href="odemeYontemi.php" class="sidebar-link" style="text-decoration: none;">
                         <i class="lni lni-wallet"></i>
                         <span>Ödeme Yöntemleri</span>

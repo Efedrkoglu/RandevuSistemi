@@ -104,4 +104,38 @@
             die($e->getMessage());
         }
     }
+
+    function selectTotalGiderByYear() {
+        try {
+            $connection = connect();
+            $sql = "SELECT YEAR(tarih) AS year, sum(miktar) AS total FROM gider GROUP BY YEAR(tarih)";
+
+            $result = $connection->query($sql);
+            $yearAndTotal = array();
+            while($row = $result->fetch()) {
+                $yearAndTotal[$row['year']] = $row['total'];
+            }
+            return $yearAndTotal;
+        }
+        catch(PDOException $e) {
+            die($e->getMessage());
+        }
+    }
+
+    function selectTotalGiderByName() {
+        try {
+            $connection = connect();
+            $sql = "SELECT ad as name, sum(miktar) AS total FROM gider GROUP BY ad";
+
+            $result = $connection->query($sql);
+            $nameAndTotal = array();
+            while($row = $result->fetch()) {
+                $nameAndTotal[$row['name']] = $row['total'];
+            }
+            return $nameAndTotal;
+        }
+        catch(PDOException $e) {
+            die($e->getMessage());
+        }
+    }
 ?>
