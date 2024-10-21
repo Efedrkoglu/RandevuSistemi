@@ -49,7 +49,7 @@
                         <select id="hizmet" name="hizmet">
                             <option selected disabled>Hizmet Seçiniz</option>
                             <?php
-                                $hizmetler = selectHizmet();
+                                $hizmetler = selectHizmet(1);
 
                                 foreach($hizmetler as $hizmet) {
                                     echo "<option value='" . $hizmet->id . "'>" . $hizmet->ad . "</option>";
@@ -59,7 +59,7 @@
                         <select id="calisan" name="calisan" disabled>
                             <option selected disabled>Çalışan Seçiniz</option>
                             <?php
-                                $calisanlar = selectCalisan();
+                                $calisanlar = selectCalisan(1);
 
                                 foreach($calisanlar as $calisan) {
                                     echo "<option value='" . $calisan->id . "'>" . $calisan->isim . "</option>";
